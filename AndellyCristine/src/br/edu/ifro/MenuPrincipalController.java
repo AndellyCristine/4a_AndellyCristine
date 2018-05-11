@@ -5,13 +5,18 @@
  */
 package br.edu.ifro;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javax.swing.JButton;
 
 /**
@@ -19,12 +24,18 @@ import javax.swing.JButton;
  * @author 04380230210
  */
 public class MenuPrincipalController implements Initializable {
+
+    private TextField txtNumero1;
     
     @FXML
-    private TextField txtNumero1, txtNumero2, txtResultado;
+    private TextField txtNumero2, txtResultado;
     
     @FXML 
-    private JButton btnSoma;
+    private Button btnSoma;
+    @FXML
+    private Label label;
+    @FXML
+    private TextField txtNumero3;
     
     @FXML
     private void soma (ActionEvent event) {
@@ -42,5 +53,25 @@ public class MenuPrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void abrirCadastroAluno(ActionEvent event) {
+    }
+
+    @FXML
+    private void fecharProjeto(ActionEvent event) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("Aluno.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(),900,682);
+            Stage stage = new Stage();
+            stage.setTitle("Cadastrar Aluno");
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch(IOException e){
+
+        }
+    }
     
 }
